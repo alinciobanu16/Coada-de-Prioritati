@@ -1,0 +1,71 @@
+Ciobanu Alin-Matei 325 CB
+
+Arhiva contine 7 fisiere .java dupa cum urmeaza:
+	Clasa Pasager:
+- clasa abstracta
+- 2 parametrii: id si prioritate
+- o metoda abstracta add
+
+	Clasa Persoana:
+- contine toate detaliile unei persoane: nume, varsta, prioritate, id, tip bilet
+imbarcare prioritara, nevoi speciale
+- metoda getPrioritate() care intoarce prioritatea persoanei
+
+	Clasa Familie:
+- extinde clasa abstracta Pasager
+- contine un vector de persoane care reprezinta o familie
+- scrie metoda abstracta din Pasager care adauga o persoana p data ca parametru
+in vectorul de persoane
+- suprascrie metoda getPrioritate care calculeaza prioritatea unei familii
+- metoda void sterge(String nume) elimina din familie persoana cu numele dat
+
+	Clasa Grup:
+- extinde clasa abstracta Pasager
+- contine un vector de persoane care reprezinta un grup
+- scrie metoda abstracta din Pasager care adauga o persoana p data ca parametru
+in vectorul de persoane
+- suprascrie metoda getPrioritate care calculeaza prioritatea unui grup
+- metoda void sterge(String nume) elimina din grup persoana cu numele dat
+
+	Clasa Singur:
+- primeste ca parametru o persoana p care calatoreste singura
+
+	Clasa Coada:
+- implementez coada de prioritate
+- metoda privata swap (int i, int j) interschimba pozitiile i si j din coada de
+prioritate
+- metoda insert(Pasager p, int prioritate) adauga in coada de prioritate pasagerul
+p care poate fi o familie, un grup sau singur, in functie de prioritate
+- metoda embark extrage pasagerul (de tipul familie, grup sau singur) aflat pe
+prima pozitie in coada de prioritate (cu prioriatea cea mai mare) pentru a se
+imbarca in avion si reface ordinea in coada.
+- metoda privata max_heapify primeste ca parametrii coada, pozitia curenta
+a unui pasager si numarul total de pasageri din coada. Metoda pozitioneaza
+pasagerul (Familie, Grup sau Singur) pe locul corespunzator in coada de prioriate
+astfel: daca copilul stang sau drept din heap este mai mare decat elementul de pe
+pozitia i (vorbim aici despre prioritatile pasagerilor) atunci interschimb
+cele 2 pozitii
+- metoda privata RSD realizeaza o parcurgere in preordine a heapului
+- meotda list apeleaza RSD si afiseaza pasagerii din coada de aspteptare in fisier
+- metoda delete sterge pasagerul p din coada (del=0) sau o persoana p din
+grupul sau (del=1). Pentru primul caz caut id-ul si il inlocuiesc cu ultimul element
+din coada dupa care efectuez ordinea in coada. Pentru eliminarea unei persoane
+dintr-un grup caut dupa nume persoana cu numele respectiv si il elimin folosind
+functia sterge din clasele prezentate anterior, iar apoi refac prioritatile grupului
+
+	Clasa Main:
+- instantiez un heap de tip Coada, un vector de familii de tip Familie, un vector
+de grupuri de tip Grup si un vector de singuri de tip Singur
+- variabilele nrF = nr familii, nrG = nr grupuri, nrS = nr singuri
+nrP = nr pasageri cititi de la input la un moment dat
+- citesc in line o linie din fisier, iar in vectorul de stringuri line2 delimitez
+line dupa spatii
+- instantiez o Persoana p si ii setez toti parametrii cu detaliile din fisier
+- adaug persoana la grupul de care apartine in functie de id
+- dupa ce adaug fiecare persoana noua citita la grupul de care apartine,
+citesc apoi comenzile de insert, embark sau list si apelez metodele
+corespunzatoare cu ajutorul instantei heap
+
+
+
+
